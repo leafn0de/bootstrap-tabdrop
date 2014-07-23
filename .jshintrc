@@ -1,0 +1,70 @@
+{
+  /*
+   * ENVIRONMENTS
+   * =================
+   */
+
+  // Define globals exposed by modern browsers.
+  "browser": true,
+
+  // Define globals exposed by jQuery.
+  "jquery": true,
+
+  // Define globals exposed by Node.
+  "node": true,
+
+  // Define globals exposed by Mocha
+  "globals": {
+	"describe": false,
+    "it": false,
+    "before": false,
+    "beforeEach": false,
+    "after": false,
+    "afterEach": false
+  },
+
+  /*
+   * ENFORCING OPTIONS
+   * =================
+   */
+
+  // Force all variable names to use either camelCase style or UPPER_CASE
+  // with underscores. This is covered by JSCS requireCamelCaseOrUpperCaseIdentifiers.
+  "camelcase": true,
+
+  // Always put curly braces around blocks
+  "curly": true,
+
+  // Prohibit use of == and != in favor of === and !==.
+  "eqeqeq": true,
+
+  // Suppress warnings about == null comparisons.
+  "eqnull": true,
+
+  // Don't try to detect whitespace - our standard is always tabs
+  "smarttabs": false,
+
+  // Prohibit use of a variable before it is defined.
+  "latedef": true,
+
+  // Require capitalized names for constructor functions.
+  "newcap": true,
+
+  // Enforce use of single quotation marks for strings.
+  "quotmark": "single",
+
+  // Prohibit trailing whitespace.
+  "trailing": true,
+
+  // Prohibit use of explicitly undeclared variables.
+  "undef": true,
+
+  // Warn when variables are defined but never used.
+  "unused": true,
+
+  // Enforce line length to 140 characters. This is covered by JSCS maximumLineLength.
+  "maxlen": 140,
+
+  // Enforce placing 'use strict' at the top function scope
+  "strict": true
+}
