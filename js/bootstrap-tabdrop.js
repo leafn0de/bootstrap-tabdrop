@@ -85,10 +85,6 @@
 				'<ul class="dropdown-menu"></ul>' +
 			'</li>').prependTo(this.element);
 
-		if (this.element.parent().is('.tabs-below')) {
-			this.dropdown.addClass('dropup');
-		}
-
 		WinResizer.register($.proxy(this.layout, this));
 		this.layout();
 	};
