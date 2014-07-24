@@ -39,6 +39,12 @@
 				}
 			};
 		return {
+			/* start-test-code */
+			removeAll: function() {
+				registered = [];
+			},
+			/* end-test-code */
+
 			/*
 			 * Registers a handler to call on window resize.
 			 *
@@ -58,9 +64,9 @@
 			 * @param fn the resize event handler to unbind from window resize events
 			 */
 			unregister: function(fn) {
-				for (i = 0, count = registered.length; i < count; i++) {
+				for (i = registered.length, count = 0; i >= count; i--) {
 					if (registered[i] === fn) {
-						delete registered[i];
+						registered.splice(i, 1);
 						break;
 					}
 				}
@@ -112,7 +118,7 @@
 	};
 
 	/* start-test-code */
-	// This will be stripped when built for production. This is only exposed for testing.
+	// Expose for testing
 	$.fn.winresizer = WinResizer;
 	/* end-test-code */
 
