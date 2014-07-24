@@ -1,0 +1,36 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Bootstrap Tabdrop Tests</title>
+	<link rel="stylesheet" href="../node_modules/mocha/mocha.css" />
+
+	<!-- Source CSS-->
+	<link rel="stylesheet" href="../css/tabdrop.css" />
+</head>
+<body>
+	<div id="mocha"></div>
+	<script src="../node_modules/mocha/mocha.js"></script>
+	<script src="../node_modules/chai/chai.js"></script>
+	<script src="../node_modules/jquery/dist/jquery.js"></script>
+
+<script>
+/*global mochaPhantomJS, mocha*/
+mocha.setup('bdd');
+mocha.reporter('html');
+</script>
+
+<!-- Source -->
+<script src="../js/bootstrap-tabdrop.js"></script>
+
+<!-- Tests -->
+<script src="test.js"></script>
+
+<script>
+if (window.mochaPhantomJS) {
+	mochaPhantomJS.run();
+} else {
+	mocha.run();
+}
+</script>
+</body>
+</html

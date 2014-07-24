@@ -1,7 +1,8 @@
-/* =========================================================
+/* ========================================================
  * bootstrap-tabdrop.js
  * http://www.eyecon.ro/bootstrap-tabdrop
  * =========================================================
+ * @license
  * Copyright 2012 Stefan Petre
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +21,7 @@
 (function($) {
 	'use strict';
 
-	var WinReszier = (function() {
+	var WinResizer = (function() {
 		var registered = [],
 			inited = false,
 			timer,
@@ -37,8 +38,12 @@
 					registered[i].apply();
 				}
 			};
-
 		return {
+			/*
+			 * Registers a handler to call on window resize.
+			 *
+			 * @param fn the resize event handler to bind to window resize events
+			 */
 			register: function(fn) {
 				registered.push(fn);
 				if (inited === false) {
@@ -46,6 +51,12 @@
 					inited = true;
 				}
 			},
+
+			/*
+			 * Deregisters a handler from being called on window resize.
+			 *
+			 * @param fn the resize event handler to unbind from window resize events
+			 */
 			unregister: function(fn) {
 				for (i = 0, count = registered.length; i < count; i++) {
 					if (registered[i] === fn) {
@@ -64,7 +75,7 @@
 		if (this.element.parent().is('.tabs-below')) {
 			this.dropdown.addClass('dropup');
 		}
-		WinReszier.register($.proxy(this.layout, this));
+		WinResizer.register($.proxy(this.layout, this));
 		this.layout();
 	};
 
@@ -99,6 +110,11 @@
 			}
 		}
 	};
+
+	/* start-test-code */
+	// This will be stripped when built for production. This is only exposed for testing.
+	$.fn.winresizer = WinResizer;
+	/* end-test-code */
 
 	$.fn.tabdrop = function(option) {
 		return this.each(function() {
