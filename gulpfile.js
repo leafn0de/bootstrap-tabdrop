@@ -53,5 +53,5 @@ gulp.task('clean', function() {
 
 // Watch our JavaScript files for changes and run our tests when something changes
 gulp.task('watch', function() {
-	gulp.watch('test/*.js', ['jshint', 'test']);
+	gulp.watch(['test/*.js', 'js/*.js'], ['jshint', 'test']);
 });
