@@ -1,9 +1,10 @@
 /* ========================================================
  * bootstrap-tabdrop.js
- * http://www.eyecon.ro/bootstrap-tabdrop
+ * https://github.com/leafn0de/bootstrap-tabdrop
  * =========================================================
  * @license
  * Copyright 2012 Stefan Petre
+ * Copyright 2014 Helen Durrant
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
