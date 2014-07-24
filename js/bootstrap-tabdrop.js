@@ -77,11 +77,18 @@
 
 	var TabDrop = function(element, options) {
 		this.element = $(element);
-		this.dropdown = $('<li class="dropdown hide pull-right tabdrop"><a class="dropdown-toggle" data-toggle="dropdown" href="#">' +
-			options.text + ' <b class="caret"></b></a><ul class="dropdown-menu"></ul></li>').prependTo(this.element);
+		this.dropdown = $(
+			'<li class="dropdown hide pull-right tabdrop">' +
+				'<a class="dropdown-toggle" data-toggle="dropdown" href="#">' +
+					options.text + ' <b class="caret"></b>' +
+				'</a>' +
+				'<ul class="dropdown-menu"></ul>' +
+			'</li>').prependTo(this.element);
+
 		if (this.element.parent().is('.tabs-below')) {
 			this.dropdown.addClass('dropup');
 		}
+
 		WinResizer.register($.proxy(this.layout, this));
 		this.layout();
 	};

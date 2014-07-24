@@ -2,37 +2,51 @@
 <head>
 	<meta charset="utf-8">
 	<title>Bootstrap Tabdrop Tests</title>
-	<link rel="stylesheet" href="../node_modules/mocha/mocha.css" />
+
+	<!-- Prerequisites for bootstrap-tabdrop -->
+	<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css" />
 
 	<!-- Source CSS-->
 	<link rel="stylesheet" href="../css/tabdrop.css" />
+
+	<!-- Testing and helper css -->
+	<link rel="stylesheet" href="../node_modules/mocha/mocha.css" />
+	<link rel="stylesheet" href="test.css" />
 </head>
 <body>
 	<div id="mocha"></div>
+	<div id="testContent" class="container"></div>
+
+	<!-- Prerequisites for bootstrap-tabdrop -->
+	<script src="../node_modules/jquery/dist/jquery.js"></script>
+	<script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+
+	<!-- Source -->
+	<script src="../js/bootstrap-tabdrop.js"></script>
+
+	<!-- Testing libraries -->
 	<script src="../node_modules/mocha/mocha.js"></script>
 	<script src="../node_modules/chai/chai.js"></script>
 	<script src="../node_modules/chai-as-promised/lib/chai-as-promised.js"></script>
 	<script src="../node_modules/sinon/pkg/sinon.js"></script>
-	<script src="../node_modules/jquery/dist/jquery.js"></script>
 
-<script>
-/*global mochaPhantomJS, mocha*/
-mocha.setup('bdd');
-mocha.reporter('html');
-</script>
+	<script>
+		/*global mocha*/
+		mocha.setup('bdd');
+		mocha.reporter('html');
+	</script>
 
-<!-- Source -->
-<script src="../js/bootstrap-tabdrop.js"></script>
+	<!-- Tests -->
+	<script src="bootstrap-tabdrop-winresizer-test.js"></script>
+	<script src="bootstrap-tabdrop-test.js"></script>
 
-<!-- Tests -->
-<script src="test.js"></script>
-
-<script>
-if (window.mochaPhantomJS) {
-	mochaPhantomJS.run();
-} else {
-	mocha.run();
-}
-</script>
+	<script>
+		/*global mochaPhantomJS*/
+		if (window.mochaPhantomJS) {
+			mochaPhantomJS.run();
+		} else {
+			mocha.run();
+		}
+	</script>
 </body>
-</html
+</html>

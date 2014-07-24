@@ -11,6 +11,7 @@
   "readmeFilename": "README.md",
   "dependencies": {},
   "devDependencies": {
+    "bootstrap": "^3.2.0",
     "chai": "^1.9.1",
     "chai-as-promised": "^4.1.1",
     "gulp": "^3.8.6",

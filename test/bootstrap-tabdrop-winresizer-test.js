@@ -7,7 +7,6 @@
 		$ = window.jQuery,
 
 		winresizer = $.fn.winresizer,
-		tabdrop = $.fn.tabdrop,
 
 		clock,
 
@@ -37,16 +36,16 @@
 			return handler;
 		});
 
-	beforeEach(function() {
-		clock = sinon.useFakeTimers();
-	});
-
-	afterEach(function() {
-		clock.restore();
-		winresizer.removeAll();
-	});
-
 	describe('winresizer', function() {
+
+		beforeEach(function() {
+			clock = sinon.useFakeTimers();
+		});
+
+		afterEach(function() {
+			clock.restore();
+			winresizer.removeAll();
+		});
 
 		it('should call registered handler on window resize', function() {
 
@@ -89,14 +88,6 @@
 
 			resizeAndWait(1, 110);
 			expect(eventHandler.getCount()).to.equal(0);
-		});
-
-	});
-
-	describe('tabdrop', function() {
-
-		it('should exist', function() {
-			expect(tabdrop).to.be.a('function');
 		});
 	});
 }());
