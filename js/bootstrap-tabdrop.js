@@ -23,22 +23,21 @@
 	'use strict';
 
 	var WinResizer = (function() {
+
 		var registered = [],
-			inited = false,
 			timer,
-			i,
-			count,
+
+			notify = function() {
+				registered.forEach(function(handler) {
+					handler.call();
+				});
+			},
 
 			resize = function() {
 				clearTimeout(timer);
 				timer = setTimeout(notify, 100);
-			},
-
-			notify = function() {
-				for (i = 0, count = registered.length; i < count; i++) {
-					registered[i].apply();
-				}
 			};
+
 		return {
 			/* start-test-code */
 			removeAll: function() {
@@ -53,10 +52,9 @@
 			 */
 			register: function(fn) {
 				registered.push(fn);
-				if (inited === false) {
-					$(window).bind('resize', resize);
-					inited = true;
-				}
+
+				$(window).off('resize', resize);
+				$(window).on('resize', resize);
 			},
 
 			/*
@@ -65,15 +63,17 @@
 			 * @param fn the resize event handler to unbind from window resize events
 			 */
 			unregister: function(fn) {
-				for (i = registered.length, count = 0; i >= count; i--) {
-					if (registered[i] === fn) {
-						registered.splice(i, 1);
-						break;
-					}
-				}
+				registered = registered.filter(function(handler) {
+					return handler !== fn;
+				});
 			}
 		};
 	}());
+
+	/* start-test-code */
+	// Expose for testing
+	$.fn.winresizer = WinResizer;
+	/* end-test-code */
 
 	var TabDrop = function(element, options) {
 		this.element = $(element);
@@ -117,11 +117,6 @@
 			}
 		}
 	};
-
-	/* start-test-code */
-	// Expose for testing
-	$.fn.winresizer = WinResizer;
-	/* end-test-code */
 
 	$.fn.tabdrop = function(option) {
 		return this.each(function() {
