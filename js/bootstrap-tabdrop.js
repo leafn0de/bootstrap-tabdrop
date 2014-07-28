@@ -76,6 +76,12 @@
 	/* end-test-code */
 
 	var TabDrop = function(element, options) {
+
+		/* start-test-code */
+		// Expose for testing
+		this.options = options;
+		/* end-test-code */
+
 		this.element = $(element);
 		this.dropdown = $(
 			'<li class="dropdown hide pull-right tabdrop">' +
@@ -94,7 +100,9 @@
 
 		layout: function() {
 			var collection = [];
+
 			this.dropdown.removeClass('hide');
+
 			this.element
 				.append(this.dropdown.find('li'))
 				.find('>li')
@@ -104,6 +112,7 @@
 						collection.push(this);
 					}
 				});
+
 			if (collection.length > 0) {
 				collection = $(collection);
 				this.dropdown
@@ -122,14 +131,18 @@
 	};
 
 	$.fn.tabdrop = function(option) {
-		return this.each(function() {
-			var $this = $(this),
-				data = $this.data('tabdrop'),
-				options = typeof option === 'object' && option;
+
+		var options = $.type(option) === 'object' ? option : {};
+
+		return this.each(function(index, element) {
+
+			var $element = $(element),
+				data = $element.data('tabdrop');
+
 			if (!data)  {
-				$this.data('tabdrop', (data = new TabDrop(this, $.extend({}, $.fn.tabdrop.defaults, options))));
+				$element.data('tabdrop', (data = new TabDrop(element, $.extend({}, $.fn.tabdrop.defaults, options))));
 			}
-			if (typeof option === 'string') {
+			if (option === 'layout') {
 				data[option]();
 			}
 		});

@@ -81,24 +81,6 @@
 			expect(dropdownTab.children('ul')).to.have.length.of(1);
 		});
 
-		it('should use the icon-align-justify icon as the default dropdown tab label content', function() {
-
-			var navTabs = $('.nav-tabs'),
-				dropdownTab,
-				dropdownToggle,
-				icon;
-
-			navTabs.tabdrop();
-
-			dropdownTab = $(navTabs.children().get(0));
-			dropdownToggle = $(dropdownTab.children('a'));
-			icon = $(dropdownToggle.children('i'));
-
-			expect(dropdownTab.hasClass('dropdown')).to.be.true;
-			expect(dropdownToggle.hasClass('dropdown-toggle')).to.be.true;
-			expect(icon.hasClass('icon-align-justify')).to.be.true;
-		});
-
 		it('should overflow tabs into the dropdown if tabs do not fit in one line', function() {
 
 			var navTabs = $('.nav-tabs'),
@@ -117,6 +99,72 @@
 
 			// The number of dropped tabs should equal 5 - the number of inline tabs
 			expect(droppedTabs).to.have.length.of(5 - inlineTabs.length);
+		});
+
+		it('should pass options through to the TabDrop contructor if it is an object', function() {
+
+			var navTabs = $('.nav-tabs');
+			navTabs.tabdrop();
+			expect($(navTabs).data('tabdrop').options).to.be.an('object');
+		});
+
+		it('should default options to an object if options is not an object or a string', function() {
+
+			var navTabs = $('.nav-tabs');
+
+			[[], false, 1, null, undefined].forEach(function(parameter) {
+				navTabs.tabdrop(parameter);
+				expect($(navTabs).data('tabdrop').options).to.be.an('object');
+				navTabs.removeData('tabdrop');
+			});
+		});
+
+		it('should use the icon-align-justify icon as the default text option if not provided', function() {
+
+			var navTabs = $('.nav-tabs');
+
+			navTabs.tabdrop();
+			expect($(navTabs).data('tabdrop').options).to.be.an('object');
+			expect($(navTabs).data('tabdrop').options.text).to.be.a('string');
+			expect($(navTabs).data('tabdrop').options.text).to.equal('<i class="icon-align-justify"></i>');
+
+		});
+
+		it('should call the layout function if options is the string \'layout\'', function() {
+
+			var called = false,
+				navTabs = $('.nav-tabs'),
+				layout = TabDrop.prototype.layout;
+
+			// Tabdrop calls layout in it's initialiser so we must call that before we call layout on it's own
+			navTabs.tabdrop();
+
+			TabDrop.prototype.layout = function() {
+				called = true;
+			};
+
+			navTabs.tabdrop('layout');
+			expect(called).to.be.true;
+
+			TabDrop.prototype.layout = layout;
+		});
+
+		it('should ignore options if it is a string that is not the string \'layout\'', function() {
+			var called = false,
+				navTabs = $('.nav-tabs'),
+				layout = TabDrop.prototype.layout;
+
+			// Tabdrop calls layout in it's initialiser so we must call that before we call layout on it's own
+			navTabs.tabdrop();
+
+			TabDrop.prototype.layout = function() {
+				called = true;
+			};
+
+			navTabs.tabdrop('not-layout');
+			expect(called).to.be.false;
+
+			TabDrop.prototype.layout = layout;
 		});
 
 		// Future behaviour
