@@ -187,9 +187,19 @@
 			expect(dropdownTab.hasClass('active')).to.be.true;
 		});
 
-		// Future behaviour
-		it('should not construct a new tabdrop if the element is not a bootstrap tab container');
+		it('should not construct a new tabdrop if the element is not a bootstrap tab container', function() {
 
+			var notTabs;
+
+			testContent.append('<div class="not-tabs"></div>');
+
+			notTabs = $('.not-tabs');
+			notTabs.tabdrop();
+
+			expect(notTabs.data('tabdrop')).not.to.be.an.instanceOf(TabDrop);
+		});
+
+		// Future behaviour
 		it('should append instead of prepending if float-left is specified');
 
 	});

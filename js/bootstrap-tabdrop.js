@@ -143,14 +143,21 @@
 		return this.each(function(index, element) {
 
 			var $element = $(element),
+				data;
+
+			// Only proceed if the element is a tab or pill container
+			if ($element.hasClass('nav-tabs') || $element.hasClass('nav-pills')) {
+
 				data = $element.data('tabdrop');
 
-			if (!data)  {
-				$element.data('tabdrop', (data = new TabDrop(element, $.extend({}, $.fn.tabdrop.defaults, options))));
+				if (!data)  {
+					$element.data('tabdrop', (data = new TabDrop(element, $.extend({}, $.fn.tabdrop.defaults, options))));
+				}
+				if (option === 'layout') {
+					data[option]();
+				}
 			}
-			if (option === 'layout') {
-				data[option]();
-			}
+
 		});
 	};
 
