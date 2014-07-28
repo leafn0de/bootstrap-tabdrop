@@ -103,28 +103,34 @@
 
 			this.dropdown.removeClass('hide');
 
+			// Append the dropdown tab to our tab container
 			this.element
 				.append(this.dropdown.find('li'))
 				.find('>li')
 				.not('.tabdrop')
 				.each(function() {
+					// For each item that is displaced, add it to our collection of tabs that are overflowing
 					if (this.offsetTop > 0) {
 						collection.push(this);
 					}
 				});
 
+			// If there are any overflowed tabs, form our dropdown
 			if (collection.length > 0) {
 				collection = $(collection);
 				this.dropdown
 					.find('ul')
 					.empty()
 					.append(collection);
+
+				// If the dropdown now contains the active tab, make the dropdown tab active
 				if (this.dropdown.find('.active').length === 1) {
 					this.dropdown.addClass('active');
 				} else {
 					this.dropdown.removeClass('active');
 				}
 			} else {
+				// If there are no overflowed tabs, hide the dropdown tab
 				this.dropdown.addClass('hide');
 			}
 		}

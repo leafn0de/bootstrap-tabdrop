@@ -167,6 +167,26 @@
 			TabDrop.prototype.layout = layout;
 		});
 
+		it('should activate the dropdown tab if one of the overflowing tabs was active', function() {
+
+			var navTabs = $('.nav-tabs'),
+				dropdownTab;
+
+			navTabs.tabdrop();
+
+			// Activate the last tab
+			$('.nav-tabs a:last').tab('show');
+
+			// Contain the tab container to a smaller size to trigger overflow
+			testContent.addClass('fixed-width');
+			navTabs.tabdrop('layout');
+
+			dropdownTab = $(navTabs.children('.dropdown'));
+
+			expect(dropdownTab).to.have.length.of(1);
+			expect(dropdownTab.hasClass('active')).to.be.true;
+		});
+
 		// Future behaviour
 		it('should not construct a new tabdrop if the element is not a bootstrap tab container');
 
