@@ -157,12 +157,11 @@
 					data[option]();
 				}
 			}
-
 		});
 	};
 
 	$.fn.tabdrop.defaults = {
-		text: '<i class="icon-align-justify"></i>'
+		text: '<i class="glyphicon glyphicon-align-justify"></i>'
 	};
 
 	$.fn.tabdrop.Constructor = TabDrop;

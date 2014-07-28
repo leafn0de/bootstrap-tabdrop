@@ -11,7 +11,12 @@
 
 		TabDrop = $.fn.tabdrop.Constructor,
 
-		testContent = $('#testContent'),
+		testContent = $('.test-container'),
+
+		// gulp-mocha-phantomjs does not currently support passing arguments through to PhantomJS, meaning I can't set the viewport size.
+		// The default phantomjs window size is 400 x 300. This means we can only fit a small number of tabs without overflowing. See this
+		// issue: https://github.com/mrhooray/gulp-mocha-phantomjs/issues/16
+		defaultNumberOfTabs = 4,
 
 		generateTabContainer = function(options) {
 
@@ -19,7 +24,7 @@
 				template = '<ul class="nav ' + tabsOrPills + '">' + '<li class="active"><a href="#">Tab 1</a></li>',
 				i;
 
-			for (i = 2; i <= 5; i++) {
+			for (i = 2; i <= defaultNumberOfTabs; i++) {
 				template += '<li><a href="#">Tab ' + i + '</a></li>';
 			}
 
@@ -70,8 +75,8 @@
 
 			navTabs.tabdrop();
 
-			// Length should be our default number of tabs (5) + 1 extra for the dropdown
-			expect(navTabs.children()).to.have.length.of(6);
+			// Length should be our default number of tabs (defaultNumberOfTabs) + 1 extra for the dropdown
+			expect(navTabs.children()).to.have.length.of(defaultNumberOfTabs + 1);
 
 			dropdownTab = $(navTabs.children().get(0));
 
@@ -95,10 +100,10 @@
 			droppedTabs = $(navTabs.children('.dropdown')).find('li');
 
 			// Some of the tabs should be dropped down into the overflow menu
-			expect(inlineTabs).to.have.length.below(5);
+			expect(inlineTabs).to.have.length.below(defaultNumberOfTabs);
 
-			// The number of dropped tabs should equal 5 - the number of inline tabs
-			expect(droppedTabs).to.have.length.of(5 - inlineTabs.length);
+			// The number of dropped tabs should equal defaultNumberOfTabs - the number of inline tabs
+			expect(droppedTabs).to.have.length.of(defaultNumberOfTabs - inlineTabs.length);
 		});
 
 		it('should pass options through to the TabDrop contructor if it is an object', function() {
@@ -119,14 +124,14 @@
 			});
 		});
 
-		it('should use the icon-align-justify icon as the default text option if not provided', function() {
+		it('should use the glyphicon-align-justify icon as the default text option if not provided', function() {
 
 			var navTabs = $('.nav-tabs');
 
 			navTabs.tabdrop();
 			expect($(navTabs).data('tabdrop').options).to.be.an('object');
 			expect($(navTabs).data('tabdrop').options.text).to.be.a('string');
-			expect($(navTabs).data('tabdrop').options.text).to.equal('<i class="icon-align-justify"></i>');
+			expect($(navTabs).data('tabdrop').options.text).to.equal('<i class="glyphicon glyphicon-align-justify"></i>');
 
 		});
 
