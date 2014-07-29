@@ -40,7 +40,7 @@ Supports `right` and `left` positioning. This will determine whether the dropdow
 
 ## Methods
 
-### tabdrop(options)
+### .tabdrop(options)
 
 Initialises a tab drop.
 ```javascript
