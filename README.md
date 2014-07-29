@@ -22,26 +22,34 @@ $('.nav-pills, .nav-tabs').tabdrop(options);
 
 ## Options
 
-#### text
-Type: string
+### text
 
-Default: icon
-```html
-<i class="icon-align-justify"></i>
-```
+Allows for customisation of the contents of the toggle anchor on the dropdown tab.
+
+**Type:** `string`
+
+**Default:** `<i class="glyphicon glyphicon-align-justify"></i>`
+
+### position
+
+Supports `right` and `left` positioning. This will determine whether the dropdown tab will be pressed up against the other tabs (left positioning) or pulled to the right (right positioning).
+
+**Type:** `string`
+
+**Default:** `right`
 
 ## Methods
 
-#### tabdrop(options)
+### tabdrop(options)
 
 Initialises a tab drop.
 ```javascript
 .tabdrop(options);
 ```
 
-#### .tabdrop('layout')
+### .tabdrop('layout')
 
-Checks if the tabs fit in one single row.
+Will ensure that tabs are correctly displayed and move items to / from the dropdown as required. This will happen automatically on window resize and when calling `tabdrop()`, but you can call it manually if you desire.
 ```javascript
 .tabdrop('layout');
 ```
