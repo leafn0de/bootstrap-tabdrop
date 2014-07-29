@@ -20,6 +20,8 @@ Call the tab drop via javascript on `.nav-tabs` and `.nav-pills` (as appropriate
 $('.nav-pills, .nav-tabs').tabdrop(options);
 ```
 
+**Note** - do not apply padding directly to the tab container. This will cause the overflow to be calculated incorrectly, and the plugin will not work as expected.
+
 ## Options
 
 ### text
