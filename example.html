@@ -1,0 +1,255 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Example Page</title>
+
+	<!-- Prerequisites for bootstrap-tabdrop -->
+	<link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css" />
+
+	<!-- Source CSS-->
+	<link rel="stylesheet" href="./build/tabdrop.css" />
+
+	<style>
+		.tab-pane {
+			padding: 10px;
+		}
+
+		.fixed-width {
+			max-width: 500px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+
+		<div class="row">
+			<h1>TabDrop Examples</h1>
+		</div>
+
+		<div class="row">
+			<h2>With Tabs</h2>
+
+			<div class="fixed-width">
+
+				<!-- Nav tabs -->
+				<ul class="nav nav-tabs tabs-example" role="tablist">
+					<li class="active"><a href="#tabs-tab1" role="tab" data-toggle="tab">Tab 1</a></li>
+					<li><a href="#tabs-tab2" role="tab" data-toggle="tab">Tab 2</a></li>
+					<li><a href="#tabs-tab3" role="tab" data-toggle="tab">Tab 3</a></li>
+					<li><a href="#tabs-tab4" role="tab" data-toggle="tab">Tab 4</a></li>
+					<li><a href="#tabs-tab5" role="tab" data-toggle="tab">Tab 5</a></li>
+					<li><a href="#tabs-tab6" role="tab" data-toggle="tab">Tab 6</a></li>
+					<li><a href="#tabs-tab7" role="tab" data-toggle="tab">Tab 7</a></li>
+					<li><a href="#tabs-tab8" role="tab" data-toggle="tab">Tab 8</a></li>
+				</ul>
+				<div class="tab-content">
+					<div class="tab-pane active" id="tabs-tab1">
+						<p>This is tab 1!</p>
+						<p>¯\_(ツ)_/¯</p>
+					</div>
+					<div class="tab-pane" id="tabs-tab2">
+						<p>This is tab 2!</p>
+						<p>(=^・^=)<p>
+					</div>
+					<div class="tab-pane" id="tabs-tab3">
+						<p>This is tab 3!</p>
+						<p>^ω^<p>
+					</div>
+					<div class="tab-pane" id="tabs-tab4">
+						<p>This is tab 4!</p>
+						<p>(╯°□°）╯︵ ┻━┻<p>
+					</div>
+					<div class="tab-pane" id="tabs-tab5">
+						<p>This is tab 5!</p>
+						<p>┬─┬ノ( º _ ºノ)<p>
+					</div>
+					<div class="tab-pane" id="tabs-tab6">
+						<p>This is tab 6!</p>
+						<p>((d[-_-]b))<p>
+					</div>
+					<div class="tab-pane" id="tabs-tab7">
+						<p>This is tab 7!</p>
+						<p>(-_-)zzz<p>
+					</div>
+					<div class="tab-pane" id="tabs-tab8">
+						<p>This is tab 8!</p>
+						<p>(✿◠‿◠)<p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<h2>With Pills</h2>
+
+			<div class="fixed-width">
+
+				<ul class="nav nav-pills pills-example" role="tablist">
+					<li class="active"><a href="#pills-tab1" role="tab" data-toggle="tab">Tab 1</a></li>
+					<li><a href="#pills-tab2" role="tab" data-toggle="tab">Tab 2</a></li>
+					<li><a href="#pills-tab3" role="tab" data-toggle="tab">Tab 3</a></li>
+					<li><a href="#pills-tab4" role="tab" data-toggle="tab">Tab 4</a></li>
+					<li><a href="#pills-tab5" role="tab" data-toggle="tab">Tab 5</a></li>
+					<li><a href="#pills-tab6" role="tab" data-toggle="tab">Tab 6</a></li>
+					<li><a href="#pills-tab7" role="tab" data-toggle="tab">Tab 7</a></li>
+					<li><a href="#pills-tab8" role="tab" data-toggle="tab">Tab 8</a></li>
+				</ul>
+				<div class="tab-content">
+					<div class="tab-pane active" id="pills-tab1">
+						<p>This is tab 1!</p>
+						<p>¯\_(ツ)_/¯</p>
+					</div>
+					<div class="tab-pane" id="pills-tab2">
+						<p>This is tab 2!</p>
+						<p>(=^・^=)<p>
+					</div>
+					<div class="tab-pane" id="pills-tab3">
+						<p>This is tab 3!</p>
+						<p>^ω^<p>
+					</div>
+					<div class="tab-pane" id="pills-tab4">
+						<p>This is tab 4!</p>
+						<p>(╯°□°）╯︵ ┻━┻<p>
+					</div>
+					<div class="tab-pane" id="pills-tab5">
+						<p>This is tab 5!</p>
+						<p>┬─┬ノ( º _ ºノ)<p>
+					</div>
+					<div class="tab-pane" id="pills-tab6">
+						<p>This is tab 6!</p>
+						<p>((d[-_-]b))<p>
+					</div>
+					<div class="tab-pane" id="pills-tab7">
+						<p>This is tab 7!</p>
+						<p>(-_-)zzz<p>
+					</div>
+					<div class="tab-pane" id="pills-tab8">
+						<p>This is tab 8!</p>
+						<p>(✿◠‿◠)<p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<h2>Left Positioned Dropdown Tab</h2>
+
+			<div class="fixed-width">
+
+				<ul class="nav nav-tabs left-example" role="tablist">
+					<li class="active"><a href="#left-tab1" role="tab" data-toggle="tab">Tab 1</a></li>
+					<li><a href="#left-tab2" role="tab" data-toggle="tab">Tab 2</a></li>
+					<li><a href="#left-tab3" role="tab" data-toggle="tab">Tab 3</a></li>
+					<li><a href="#left-tab4" role="tab" data-toggle="tab">Tab 4</a></li>
+					<li><a href="#left-tab5" role="tab" data-toggle="tab">Tab 5</a></li>
+					<li><a href="#left-tab6" role="tab" data-toggle="tab">Tab 6</a></li>
+					<li><a href="#left-tab7" role="tab" data-toggle="tab">Tab 7</a></li>
+					<li><a href="#left-tab8" role="tab" data-toggle="tab">Tab 8</a></li>
+				</ul>
+				<div class="tab-content">
+					<div class="tab-pane active" id="left-tab1">
+						<p>This is tab 1!</p>
+						<p>¯\_(ツ)_/¯</p>
+					</div>
+					<div class="tab-pane" id="left-tab2">
+						<p>This is tab 2!</p>
+						<p>(=^・^=)<p>
+					</div>
+					<div class="tab-pane" id="left-tab3">
+						<p>This is tab 3!</p>
+						<p>^ω^<p>
+					</div>
+					<div class="tab-pane" id="left-tab4">
+						<p>This is tab 4!</p>
+						<p>(╯°□°）╯︵ ┻━┻<p>
+					</div>
+					<div class="tab-pane" id="left-tab5">
+						<p>This is tab 5!</p>
+						<p>┬─┬ノ( º _ ºノ)<p>
+					</div>
+					<div class="tab-pane" id="left-tab6">
+						<p>This is tab 6!</p>
+						<p>((d[-_-]b))<p>
+					</div>
+					<div class="tab-pane" id="left-tab7">
+						<p>This is tab 7!</p>
+						<p>(-_-)zzz<p>
+					</div>
+					<div class="tab-pane" id="left-tab8">
+						<p>This is tab 8!</p>
+						<p>(✿◠‿◠)<p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<h2>Custom Icon</h2>
+
+			<div class="fixed-width">
+
+				<ul class="nav nav-tabs custom-example" role="tablist">
+					<li class="active"><a href="#custom-tab1" role="tab" data-toggle="tab">Tab 1</a></li>
+					<li><a href="#custom-tab2" role="tab" data-toggle="tab">Tab 2</a></li>
+					<li><a href="#custom-tab3" role="tab" data-toggle="tab">Tab 3</a></li>
+					<li><a href="#custom-tab4" role="tab" data-toggle="tab">Tab 4</a></li>
+					<li><a href="#custom-tab5" role="tab" data-toggle="tab">Tab 5</a></li>
+					<li><a href="#custom-tab6" role="tab" data-toggle="tab">Tab 6</a></li>
+					<li><a href="#custom-tab7" role="tab" data-toggle="tab">Tab 7</a></li>
+					<li><a href="#custom-tab8" role="tab" data-toggle="tab">Tab 8</a></li>
+				</ul>
+				<div class="tab-content">
+					<div class="tab-pane active" id="custom-tab1">
+						<p>This is tab 1!</p>
+						<p>¯\_(ツ)_/¯</p>
+
+					</div>
+					<div class="tab-pane" id="custom-tab2">
+						<p>This is tab 2!</p>
+						<p>(=^・^=)<p>
+					</div>
+					<div class="tab-pane" id="custom-tab3">
+						<p>This is tab 3!</p>
+						<p>^ω^<p>
+					</div>
+					<div class="tab-pane" id="custom-tab4">
+						<p>This is tab 4!</p>
+						<p>(╯°□°）╯︵ ┻━┻<p>
+					</div>
+					<div class="tab-pane" id="custom-tab5">
+						<p>This is tab 5!</p>
+						<p>┬─┬ノ( º _ ºノ)<p>
+					</div>
+					<div class="tab-pane" id="custom-tab6">
+						<p>This is tab 6!</p>
+						<p>((d[-_-]b))<p>
+					</div>
+					<div class="tab-pane" id="custom-tab7">
+						<p>This is tab 7!</p>
+						<p>(-_-)zzz<p>
+					</div>
+					<div class="tab-pane" id="custom-tab8">
+						<p>This is tab 8!</p>
+						<p>(✿◠‿◠)<p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Prerequisites for bootstrap-tabdrop -->
+	<script src="./node_modules/jquery/dist/jquery.js"></script>
+	<script src="./node_modules/bootstrap/dist/js/bootstrap.js"></script>
+
+	<!-- Source -->
+	<script src="./js/bootstrap-tabdrop.js"></script>
+
+	<script>
+		$('.tabs-example').tabdrop();
+		$('.pills-example').tabdrop();
+		$('.left-example').tabdrop({position: 'left'});
+		$('.custom-example').tabdrop({text: '<i class="glyphicon glyphicon-heart"></i>'});
+	</script>
+</body>
+</html>

@@ -77,19 +77,24 @@
 
 	var TabDrop = function(element, options) {
 
-		/* start-test-code */
-		// Expose for testing
 		this.options = options;
-		/* end-test-code */
+
+		var pullRight = options.position === 'right' ? 'pull-right' : '';
 
 		this.element = $(element);
 		this.dropdown = $(
-			'<li class="dropdown hide pull-right tabdrop">' +
+			'<li class="dropdown hide ' + pullRight + ' tabdrop">' +
 				'<a class="dropdown-toggle" data-toggle="dropdown" href="#">' +
 					options.text + ' <b class="caret"></b>' +
 				'</a>' +
 				'<ul class="dropdown-menu"></ul>' +
-			'</li>').prependTo(this.element);
+			'</li>');
+
+		if (pullRight) {
+			this.dropdown.prependTo(this.element);
+		} else {
+			this.dropdown.appendTo(this.element);
+		}
 
 		WinResizer.register($.proxy(this.layout, this));
 		this.layout();
@@ -99,21 +104,28 @@
 		constructor: TabDrop,
 
 		layout: function() {
-			var collection = [];
+			var collection = [],
+				resetList;
 
 			this.dropdown.removeClass('hide');
 
-			// Append the dropdown tab to our tab container
-			this.element
-				.append(this.dropdown.find('li'))
-				.find('>li')
-				.not('.tabdrop')
-				.each(function() {
-					// For each item that is displaced, add it to our collection of tabs that are overflowing
-					if (this.offsetTop > 0) {
-						collection.push(this);
-					}
-				});
+			// Return all tabs to their original positions
+			resetList = this.element.append(this.dropdown.find('li'));
+
+			// Move the dropdown to the beginning of the list, to ensure we take into account the space required to
+			// display the dropdown, when calculating which items are overflowing
+			resetList.prepend(this.dropdown);
+
+			resetList.find('>li').not('.tabdrop').each(function() {
+				// For each item that is displaced, add it to our collection of tabs that are overflowing
+				if (this.offsetTop > 0) {
+					collection.push(this);
+				}
+			});
+
+			if (this.options.position === 'left') {
+				resetList.append(this.dropdown);
+			}
 
 			// If there are any overflowed tabs, form our dropdown
 			if (collection.length > 0) {
@@ -140,6 +152,8 @@
 
 		var options = $.type(option) === 'object' ? option : {};
 
+		options.position = ['right', 'left'].indexOf(options.position) !== -1 ? options.position : 'right';
+
 		return this.each(function(index, element) {
 
 			var $element = $(element),
@@ -161,7 +175,8 @@
 	};
 
 	$.fn.tabdrop.defaults = {
-		text: '<i class="glyphicon glyphicon-align-justify"></i>'
+		text: '<i class="glyphicon glyphicon-align-justify"></i>',
+		position: 'right'
 	};
 
 	$.fn.tabdrop.Constructor = TabDrop;
