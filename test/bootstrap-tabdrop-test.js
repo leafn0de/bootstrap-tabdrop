@@ -109,7 +109,16 @@
 
 		});
 
-		it('should use the provided text option instead of the default if provided');
+		it('should use the provided text option instead of the default if provided', function() {
+
+			var navTabs = $('.nav-tabs');
+
+			navTabs.tabdrop({text: '<i class="glyphicon glyphicon-heart"></i>'});
+			expect($(navTabs).data('tabdrop').options).to.be.an('object');
+			expect($(navTabs).data('tabdrop').options.text).to.be.a('string');
+			expect($(navTabs).data('tabdrop').options.text).to.equal('<i class="glyphicon glyphicon-heart"></i>');
+
+		});
 
 		it('should call the layout function if options is the string \'layout\'', function() {
 
